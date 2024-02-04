@@ -1,0 +1,62 @@
+centric-upload-area ::ng-deep .centric-upload-file-container {
+    width: 400px;
+  }
+  
+  .centric-upload-files-list-container {
+    width: 400px;
+    margin-top: 8px;
+  }
+  
+  centric-button {
+    margin-left: 8px;
+  }
+  
+
+  //blok2
+
+  :host ::ng-deep {
+    mat-sidenav-container {
+      height: 400px;
+    }
+  }
+  
+  .demo-page {
+    display: flex;
+    flex-direction: column;
+  
+    centric-header {
+      z-index: 2;
+    }
+  
+    [sidenav-header],
+    [sidenav-footer] {
+      padding: 8px;
+    }
+  
+    p.content {
+      margin: 16px;
+    }
+    .centric-upload-file-container{
+        
+        margin: auto;
+    }
+
+    //Upload area block
+    centric-upload-area ::ng-deep .centric-upload-file-container {
+      width: 400px;
+    }
+    
+    .centric-upload-files-list-container {
+      width: 400px;
+      margin-top: 8px;
+    }
+    
+    centric-button {
+      margin-left: 8px;
+    }
+
+
+
+    
+  }
+  
