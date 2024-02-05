@@ -2,7 +2,8 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBarRef } from '@angular/material/snack-bar';
 import { SnackbarService } from '@windmill/ng-windmill';
-// import { HttpClient } from '@angular/common/http';
+import { wishes } from 'src/models/wish-properties';
+import { WishService } from './services/wish.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ import { SnackbarService } from '@windmill/ng-windmill';
 })
 
 
-export class AppComponent implements OnInit  {
+export class AppComponent  {
   title = 'MyWishTool';
   files: File[] = [];
   filesList: File[] = [];
@@ -19,9 +20,10 @@ export class AppComponent implements OnInit  {
   numberOfFilesAdded = 0;
   statusMessage = '';
   currentDate = new Date();
-  // wishes: Object | any;
-
-  constructor(private readonly snackbarService: SnackbarService, private readonly liveAnnouncer: LiveAnnouncer, ) {} 
+  //This is how you create a wish
+  //If you want to inject a service you have to put this in the constructor
+  wishes: wishes[] = []
+  constructor(private readonly snackbarService: SnackbarService, private readonly liveAnnouncer: LiveAnnouncer, private wishService: WishService) {} 
   // private http: HttpClient
 
   getUploadedFiles(event: File[]): void {
@@ -43,19 +45,44 @@ export class AppComponent implements OnInit  {
     } else {
       this.statusMessage = 'No files were added';
     }
+    console.log(JSON.stringify(addedFiles[0]));
+    const fileReader = new FileReader();
+    fileReader.readAsText(addedFiles[0]);
+    fileReader.onload = () => {
+    
+    var jsonRecords =  (JSON.parse(fileReader.result as string));
+    console.log(jsonRecords);
+    this.mappingRecords(jsonRecords.records);
 
+    }
     return this.liveAnnouncer.announce(this.statusMessage);
+    
+  }
+
+  mappingRecords(records : any)
+  {
+    for(let i=0; i < records.length ; i++)
+    {
+      var wish = {
+      ChangeId: records[i].correlation_id,
+      ShortDescription: records[i].description,
+      ShortName: records[i].short_description,   
+      }
+      this.wishes.push(wish);
+    }
+    console.log(this.wishes);
+    this.wishService.addWishes(this.wishes).subscribe(response => {console.log("wishesAdded", response)}, error =>{console.log("error", error)}
+    );
+
   }
 
   filterFileTypes(files: File[]): File[] {
     const acceptedFiles: File[] = [];
     files.forEach(file => {
       if (
-        file.type.includes('text') ||
-        file.type.includes('pdf') ||
-        file.type.includes('json') ||
-        file.type.includes('officedocument') ||
-        file.type.includes('msword')
+    
+        file.type.includes('json') 
+       
       ) {
         acceptedFiles.push(file);
       }
@@ -92,8 +119,4 @@ export class AppComponent implements OnInit  {
     this.filesList.splice(index, 1);
   }
    
-  ngOnInit(): void {
-    // this.http.get('https://localhost:7298/api/MyWish/uploadfile').subscribe((data) => this.wishes = data);
-  }
-
 }

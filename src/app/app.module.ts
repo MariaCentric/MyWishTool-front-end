@@ -4,7 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CentricHeaderModule, CentricIcon2Module, CentricSidenavModule, CentricUploadAreaModule } from '@windmill/ng-windmill';
 import { CentricButtonModule } from '@windmill/ng-windmill';
-import { HttpClientJsonpModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -12,7 +13,6 @@ import { HttpClientJsonpModule } from '@angular/common/http';
     AppComponent
   ],
   imports: [
-    HttpClientJsonpModule,
     BrowserModule,
     AppRoutingModule,
     CentricUploadAreaModule, 
@@ -20,6 +20,7 @@ import { HttpClientJsonpModule } from '@angular/common/http';
     CentricIcon2Module,
     CentricHeaderModule,
     CentricSidenavModule,
+    HttpClientModule
     
   ],
   providers: [],

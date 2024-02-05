@@ -1,24 +1,27 @@
-import { HttpClient } from '@angular/common/http';
-import {OnInit} from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Injectable, OnInit} from '@angular/core';
+import { wishes } from 'src/models/wish-properties';
 
-
-export class WishService implements OnInit{
-  public Id: Int32List;
-  public ChangeId: String;
-  public ShortDescription: String;
-  public ShortName: String;
-  public CreationDate: Date; 
-  public LasUpdatedDate: Date;
-
+@Injectable({
+    providedIn: 'root'
+})
+export class WishService{
 
   constructor(private http: HttpClient) { }
 
   getAllWishes()
   {
-    this.http.get('https://localhost:7298/api/MyWish')
+    this.http.get('https://localhost:7298/api/MyWish') 
+  }
+  addWishes(wishes: wishes[])
+  {
+    const httpOptions = {
+        //Posting data in Json format
+        headers: new HttpHeaders ({
+            "Content-Type": "application/json"
+        })
+    }
+    return this.http.post('https://localhost:7298/api/MyWish', wishes, httpOptions)
   }
 
-  ngOnInit(){
-
-  }
 }
