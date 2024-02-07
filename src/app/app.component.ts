@@ -1,5 +1,5 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { MatSnackBarRef } from '@angular/material/snack-bar';
 import { SnackbarService } from '@windmill/ng-windmill';
 import { wishes } from 'src/models/wish-properties';

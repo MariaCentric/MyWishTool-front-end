@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CentricHeaderModule, CentricIcon2Module, CentricSidenavModule, CentricUploadAreaModule } from '@windmill/ng-windmill';
+import { CentricIcon2Module, CentricUploadAreaModule } from '@windmill/ng-windmill';
 import { CentricButtonModule } from '@windmill/ng-windmill';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -18,10 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     CentricUploadAreaModule, 
     CentricButtonModule,
     CentricIcon2Module,
-    CentricHeaderModule,
-    CentricSidenavModule,
-    HttpClientModule
-    
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

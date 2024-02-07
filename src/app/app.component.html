@@ -1,19 +1,13 @@
 <router-outlet></router-outlet>
 
-<p>ariaLabelButtonUpload set to: <b>'Upload supported files'</b></p>
-<p>
-  ariaDescriptionButtonUpload set to:
-  <b>'Supported file types: TXT, PDF, DOC, DOCX'</b>
-</p>
-
 <centric-upload-area
-  message="Drag and drop files here to upload or browse"
-  extraMessage="Supports: TXT, PDF, JSON, DOC, DOCX"
-  buttonText="Upload files"
+  message="Versleep en plaats uw file hier"
+  extraMessage="Accepteert: JSON"
+  buttonText="Upload file"
   [files]="files"
   [multiple]="true"
-  [ariaLabelButtonUpload]="'Upload supported files'"
-  [ariaDescriptionButtonUpload]="'Supported file types: TXT, PDF, JSON, DOC, DOCX'"
+  [ariaLabelButtonUpload]="'Upload files'"
+  [ariaDescriptionButtonUpload]="'Accepteert: JSON'"
   (filesUploaded)="getUploadedFiles($event)"
   (fileDuplicated)="errorIfDuplicated($event)"
   (filesLastAdded)="onFilesAdded($event)"
@@ -47,8 +41,7 @@
 
 <div
   *ngIf="filesList !== undefined && filesList.length > 0"
-  class="centric-upload-files-list-container"
->
+  class="centric-upload-files-list-container">
   <div class="upload-files-list" *ngFor="let file of filesList; let i = index">
     <centric-icon2 class="icon-file" svgIcon="file_r" size="48">
     </centric-icon2>
