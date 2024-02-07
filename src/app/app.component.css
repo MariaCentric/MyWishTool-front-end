@@ -1,5 +1,6 @@
 centric-upload-area ::ng-deep .centric-upload-file-container {
   width: 400px;
+  margin-top: 30%;
 }
 
 .centric-upload-files-list-container {
@@ -11,11 +12,18 @@ centric-button {
   margin-left: 8px;
 }
 
+:host ::ng-deep mat-sidenav-container {
+  height: 400px;
+}
+
 .demo-page {
   display: flex;
   flex-direction: column;
 }
 
+.demo-page centric-header {
+  z-index: 2;
+}
 
 .demo-page p.content {
   margin: 16px;

@@ -1,5 +1,6 @@
 centric-upload-area ::ng-deep .centric-upload-file-container {
     width: 400px;
+    margin-top:30%;
   }
   
   .centric-upload-files-list-container {
@@ -11,8 +12,6 @@ centric-upload-area ::ng-deep .centric-upload-file-container {
     margin-left: 8px;
   }
   
-
-  //blok2
 
   :host ::ng-deep {
     mat-sidenav-container {
@@ -26,11 +25,6 @@ centric-upload-area ::ng-deep .centric-upload-file-container {
   
     centric-header {
       z-index: 2;
-    }
-  
-    [sidenav-header],
-    [sidenav-footer] {
-      padding: 8px;
     }
   
     p.content {
@@ -54,9 +48,6 @@ centric-upload-area ::ng-deep .centric-upload-file-container {
     centric-button {
       margin-left: 8px;
     }
-
-
-
     
   }
   
