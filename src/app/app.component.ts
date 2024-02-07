@@ -11,21 +11,19 @@ import { WishService } from './services/wish.service';
   styleUrls: ['./app.component.scss']
 })
 
-
 export class AppComponent  {
   title = 'MyWishTool';
   files: File[] = [];
   filesList: File[] = [];
   snackBarRef!: MatSnackBarRef<unknown>;
   numberOfFilesAdded = 0;
-  statusMessage = '';
+  statusMessage = 'Verzonden!';
   currentDate = new Date();
   //This is how you create a wish
   //If you want to inject a service you have to put this in the constructor
   wishes: wishes[] = []
   constructor(private readonly snackbarService: SnackbarService, private readonly liveAnnouncer: LiveAnnouncer, private wishService: WishService) {} 
   // private http: HttpClient
-
   getUploadedFiles(event: File[]): void {
     this.files = this.filterFileTypes(event);
   }
@@ -53,8 +51,8 @@ export class AppComponent  {
     var jsonRecords =  (JSON.parse(fileReader.result as string));
     console.log(jsonRecords);
     this.mappingRecords(jsonRecords.records);
-
     }
+    
     return this.liveAnnouncer.announce(this.statusMessage);
     
   }
