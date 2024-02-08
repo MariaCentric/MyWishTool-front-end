@@ -17,7 +17,7 @@ export class AppComponent  {
   filesList: File[] = [];
   snackBarRef!: MatSnackBarRef<unknown>;
   numberOfFilesAdded = 0;
-  statusMessage = 'Verzonden!';
+  statusMessage = '';
   currentDate = new Date();
   //This is how you create a wish
   //If you want to inject a service you have to put this in the constructor
